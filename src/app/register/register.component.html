@@ -1,0 +1,123 @@
+<h1 style="color: blueviolet" class="m-lg-5">Đăng Ký</h1>
+<div class="container">
+  <div class="col-5">
+    <form class="form-control" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-2">
+          <label style="color: blueviolet">Tài khoản: </label>
+        </div>
+        <div class="col-10">
+          <input type="text" placeholder="Nhập tên tài khoản" formControlName="account">
+        </div>
+        <div *ngIf="!account?.valid && (account?.dirty || account?.touched)">
+          <div [hidden]="!account?.errors?.['required']">
+            <p style="color: #e74809">Không bỏ trống tài khoản</p>
+          </div>
+          <div [hidden]="!account?.errors?.['minlength']">
+            <p style="color: #e74809">Nhập ít nhất 3 kí trở lên </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-2">
+          <label style="color: blueviolet"> Mật khẩu: </label>
+        </div>
+        <div class="col-10">
+          <input type="password"placeholder="Nhập mật khẩu muốn tạo " formControlName="password">
+        </div>
+        <div *ngIf="!password?.valid && (password?.dirty || password?.touched)">
+          <div [hidden]="!password?.errors?.['required']">
+            <p style="color: #e74809"> Không bỏ trống mật khẩu </p>
+          </div>
+          <div [hidden]="!password?.errors?.['minlength']">
+            <p style="color: #e74809"> Nhập ít nhất 3 kí trở lên </p>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-2">
+          <label style="color: blueviolet"> Tên: </label>
+        </div>
+        <div class="col-10">
+          <input type="text"placeholder="Nhập họ và tên của bạn" formControlName="name">
+        </div>
+        <div *ngIf="!name?.valid && (name?.dirty || name?.touched)">
+          <div [hidden]="!name?.errors?.['required']">
+            <p style="color: #e74809"> Không bỏ trống tên </p>
+          </div>
+          <div [hidden]="!name?.errors?.['minlength']">
+            <p style="color: #e74809"> Nhập ít nhất 3 kí tự </p>
+          </div>
+          <div [hidden]="!name?.errors?.['pattern']">
+            <p style="color: #e74809"> Chỉ ký tự được phép </p>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-2">
+          <label style="color: blueviolet"> Tuổi: </label>
+        </div>
+        <div class="col-10">
+          <input type="number" placeholder="Nhập tuổi của bạn là số" formControlName="age">
+        </div>
+
+        <div *ngIf="!age?.valid && (age?.dirty || age?.touched)">
+          <div [hidden]="!age?.errors?.['required']">
+            <p style="color: #e74809"> Không để trống tuổi </p>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-2">
+          <label style="color: blueviolet"> Email: </label>
+        </div>
+        <div class="col-10">
+          <input type="gmail" placeholder="Nhập email của bạn" formControlName="email">
+        </div>
+
+        <div *ngIf="!email?.valid && (email?.dirty || email?.touched)">
+          <div [hidden]="!email?.errors?.['required']">
+            <p style="color: #e74809"> Không để trống Email </p>
+          </div>
+          <div [hidden]="!email?.errors?.['minlength']">
+            <p style="color: #e74809"> Nhập ít nhất 3 kí tự </p>
+          </div>
+          <div [hidden]="!email?.errors?.['email']">
+            <p style="color: #e74809"> Hãy nhập đúng định dạng như abc@ayzmail.com </p>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-2">
+          <label style="color: blueviolet"> Địa chỉ: </label>
+        </div>
+        <div class="col-10">
+          <input type="text"placeholder="Nhập địa chỉ của bạn" formControlName="address">
+        </div>
+
+        <div *ngIf="!email?.valid && (email?.dirty || email?.touched)">
+          <div [hidden]="!email?.errors?.['required']">
+            <p style="color: #e74809"> Không để trống địa chỉ </p>
+          </div>
+          <div [hidden]="!email?.errors?.['minlength']">
+            <p style="color: #e74809"> Độ dài ít nhất 3 kí tự </p>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-2">
+          <label style="color: blueviolet"> Giới tính: </label>
+        </div>
+        <div class="col-10">
+          <input type="radio" value="male" name="gender" formControlName="gender"> Nam
+          <input type="radio" value="female" name="gender" formControlName="gender"> Nữ
+          <input type="radio" value="other" name="gender" formControlName="gender"> Bê đê
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <input class=" col-4 mt-3" type="submit" value="Đăng ký" [disabled]="!registerForm.valid">
+      </div>
+    </form>
+  </div>
+</div>
